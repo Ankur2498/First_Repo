@@ -1,7 +1,6 @@
 from tkinter import *
 from random import choices
 from enum import Enum
-import time
 
 def main():
     def forget():
