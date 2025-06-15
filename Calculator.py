@@ -1,23 +1,54 @@
-from tkinter import *
+class calculator:
+    def __init__(self):
+        pass
 
-def main():
-    output = 'Error'
+    def add(self, *args: int):
+        try:
+            if not args:
+                print("No number provided!")
+            else:
+                print(sum(args)) 
+        except TypeError:
+            print("⚠️  Addition is done only with numbers.")
 
-    window = Tk()
-    window.geometry('400x400')
-    window.config(bg="#4dd399")
+    def subtract(self,*args:int):
+        try:
+            result = args[0]
+            for i in args[1:]:
+                result -= i
+            print(result)
+        except TypeError:
+            print("Can't subtract with strings.")
+        except IndexError:
+            print("You should give a input.")
 
-    def board():
-        board_label = Label(window,text=f"{output}",
-                            height='5',
-                            width='25',bg='white',fg='black',
-                            font=('Cosmic Sans',20),
-                            anchor='center')#s for bottom
-        board_label.pack()
-    board()
+    def multiply(self, *args: int):
+        if not args:
+            print("No number provided.")
+        else:
+            result = 1
+            for i in args:
+                result *= i
 
-    #, def option():
-        
+            if isinstance(result, str):  # Ensures result is not a string
+                print("⚠️  You should give a number!")
+            else:
+                print(result)
 
-    window.mainloop()
-main()
+    def divide(self,*args:int):
+        try:
+            result = args[0]
+            for i in args[1:]:
+                result /= i
+            print(result)
+        except ZeroDivisionError:
+            print("Can't divide with zero.")
+        except TypeError:
+            print("can't divide with strings.")
+        except IndexError:
+            print("You should give a input.")
+
+user = calculator()
+user.multiply(3,6)
+user.divide()
+user.subtract()
