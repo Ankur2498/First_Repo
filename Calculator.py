@@ -1,3 +1,5 @@
+import math
+
 class calculator:
     def __init__(self):
         pass
@@ -40,7 +42,7 @@ class calculator:
             result = args[0]
             for i in args[1:]:
                 result /= i
-            print(result)
+            print(f"{result:.2f}")
         except ZeroDivisionError:
             print("Can't divide with zero.")
         except TypeError:
@@ -48,7 +50,27 @@ class calculator:
         except IndexError:
             print("You should give a input.")
 
+
+        #✅ The Formula:
+        #    LCM(𝑎,𝑏)=        𝑎×𝑏
+        #                   GCD(𝑎,𝑏)
+
+
+    def lcm(self,*args:int):
+        try:
+            result = args[0]
+            for num in args[1:]:
+                result = (result * num) // math.gcd(result,num)
+            
+            if isinstance(result,str):
+                print("⚠️  can't find lcm of strings.")
+            else:
+                print(result)
+        except TypeError:
+            print("⚠️  can't find lcm of strings.")
+        except IndexError:
+            print("⚠️  no numbers provided.")
+            
+
 user = calculator()
-user.multiply(3,6)
-user.divide()
-user.subtract()
+user.lcm(4,6,12)
